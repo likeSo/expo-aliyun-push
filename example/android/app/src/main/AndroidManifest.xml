@@ -12,6 +12,14 @@
     </intent>
   </queries>
   <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="true" android:theme="@style/AppTheme" android:supportsRtl="true">
+    <meta-data android:name="OPPO_PUSH_APP_KEY" android:value="64308dc099bf45a286cecd36f6961093"/>
+    <meta-data android:name="OPPO_PUSH_APP_SECRET" android:value="f487c7f02eeb4004be1059bb8d8d38eb"/>
+    <meta-data android:name="com.alibaba.app.appkey" android:value="335446530"/>
+    <meta-data android:name="com.alibaba.app.appsecret" android:value="0c7423370a1f4739a182b16fedc1ec9e"/>
+    <meta-data android:name="com.hihonor.push.app_id" android:value="104484589"/>
+    <meta-data android:name="com.huawei.hms.client.appid" android:value="113630543"/>
+    <meta-data android:name="com.vivo.push.api_key" android:value="1075262f49abc0a99eafae219171282f"/>
+    <meta-data android:name="com.vivo.push.app_id" android:value="105864041"/>
     <meta-data android:name="expo.modules.updates.ENABLED" android:value="false"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="ALWAYS"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>

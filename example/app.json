@@ -25,6 +25,44 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "../app.plugin.js",
+        {
+          "androidAliyunAppKey": "335446530",
+          "androidAliyunAppSecret": "0c7423370a1f4739a182b16fedc1ec9e",
+          "iosAliyunAppKey": "335460396",
+          "iosAliyunAppSecret": "c15e523e55c543bab729c06bd554477e",
+          "xiaomiAppId": "",
+          "xiaomiAppKey": "",
+          "xiaomiInternational": false,
+          "huaweiAppId": "113630543",
+          "honorAppId": "104484589",
+          "vivoAppId": "105864041",
+          "vivoAppKey": "1075262f49abc0a99eafae219171282f",
+          "oppoAppKey": "64308dc099bf45a286cecd36f6961093",
+          "oppoAppSecret": "f487c7f02eeb4004be1059bb8d8d38eb",
+          "meizuAppId": "",
+          "meizuAppKey": "",
+          "fcmSendId": "",
+          "fcmAppId": "",
+          "fcmProjectId": "",
+          "fcmApiKey": ""
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "",
+            "extraMavenRepos": [
+              "https://maven.aliyun.com/nexus/content/repositories/releases/",
+              "https://developer.huawei.com/repo/"
+            ]
+          }
+        }
+      ]
+    ]
   }
 }

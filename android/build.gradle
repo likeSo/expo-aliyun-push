@@ -14,30 +14,44 @@ useExpoPublishing()
 // Most of the time, you may like to manage the Android SDK versions yourself.
 def useManagedAndroidSdkVersions = false
 if (useManagedAndroidSdkVersions) {
-  useDefaultAndroidSdkVersions()
+    useDefaultAndroidSdkVersions()
 } else {
-  buildscript {
-    // Simple helper that allows the root project to override versions declared by this library.
-    ext.safeExtGet = { prop, fallback ->
-      rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    buildscript {
+        // Simple helper that allows the root project to override versions declared by this library.
+        ext.safeExtGet = { prop, fallback ->
+            rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+        }
     }
-  }
-  project.android {
-    compileSdkVersion safeExtGet("compileSdkVersion", 34)
-    defaultConfig {
-      minSdkVersion safeExtGet("minSdkVersion", 21)
-      targetSdkVersion safeExtGet("targetSdkVersion", 34)
+    project.android {
+        compileSdkVersion safeExtGet("compileSdkVersion", 34)
+        defaultConfig {
+            minSdkVersion safeExtGet("minSdkVersion", 21)
+            targetSdkVersion safeExtGet("targetSdkVersion", 34)
+        }
     }
-  }
 }
 
 android {
-  namespace "expo.modules.aliyunpush"
-  defaultConfig {
-    versionCode 1
-    versionName "0.1.0"
-  }
-  lintOptions {
-    abortOnError false
-  }
+    namespace "expo.modules.aliyunpush"
+    defaultConfig {
+        versionCode 1
+        versionName "0.1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    implementation 'com.aliyun.ams:alicloud-android-push:3.9.3'
+    implementation 'com.aliyun.ams:alicloud-android-third-push:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-oppo:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-vivo:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-honor:3.9.2'
+    implementation 'com.huawei.hms:push:6.12.0.300'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-fcm:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-meizu:3.9.2'
+    implementation 'com.aliyun.ams:alicloud-android-third-push-xiaomi:3.9.2'
 }
