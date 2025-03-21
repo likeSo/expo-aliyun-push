@@ -1,4 +1,5 @@
 PODS:
+  - AlicloudPush (2.2.1)
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
   - EXConstants (17.0.8):
@@ -6,6 +7,7 @@ PODS:
   - Expo (52.0.39):
     - ExpoModulesCore
   - ExpoAliyunPush (0.1.0):
+    - AlicloudPush (~> 2.2.1)
     - ExpoModulesCore
   - ExpoAsset (11.0.4):
     - ExpoModulesCore
@@ -1625,7 +1627,9 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/aliyun/aliyun-specs.git:
+    - AlicloudPush
+  https://github.com/CocoaPods/Specs:
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1774,11 +1778,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AlicloudPush: 2207a8df42f9e186f2fbf80307df3df87e8a6abe
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   EXConstants: a1f35b9aabbb3c6791f8e67722579b1ffcdd3f18
   Expo: d01030025d6965c98bd968ea9b71ae5bb9727cb8
-  ExpoAliyunPush: db6b99a308e0deb8fc3fdae424b8a2f7cf47c4d2
+  ExpoAliyunPush: 4cf399ac5a61cd267dc9519556e129d360194b6a
   ExpoAsset: a4cbc27a7cd24a6e87eb719603790b2cfa8dd326
   ExpoFileSystem: 4d2e7f77a41cfde8c3ae98580d872cd49437f993
   ExpoFont: 773955186469acc5108ff569712a2d243857475f
@@ -1847,6 +1852,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 90d80701b27946c4b23461c00a7207f300a6ff71
 
-PODFILE CHECKSUM: ede3cd3604e2f1ccd5eefbdd34b52c486c1c9450
+PODFILE CHECKSUM: d12e4e2a0b0dfe71796750d766b96e0d85020f66
 
 COCOAPODS: 1.16.2

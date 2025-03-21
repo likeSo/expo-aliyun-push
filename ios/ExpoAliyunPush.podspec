@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
   s.dependency 'AlicloudPush', '~> 2.2.1'
+  s.framework 'UserNotifications'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {

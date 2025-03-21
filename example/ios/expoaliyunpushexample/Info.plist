@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>ALIYUN_PUSH_APP_KEY</key>
+    <string>335460396</string>
+    <key>ALIYUN_PUSH_APP_SECRET</key>
+    <string>c15e523e55c543bab729c06bd554477e</string>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
     <key>CFBundleDevelopmentRegion</key>

@@ -1,22 +1,32 @@
 import type { StyleProp, ViewStyle } from 'react-native';
 
-export type OnLoadEventPayload = {
-  url: string;
-};
 
 export type ExpoAliyunPushModuleEvents = {
-  onChange: (params: ChangeEventPayload) => void;
+  onNotification: (params: NotificationEventPayload) => void;
+  onNotificationReceivedInApp: (params: NotificationEventPayload) => void;
+  onNotificationOpened: (params: NotificationEventPayload) => void;
+  onMessage: (params: MessageEventPayload) => void;
+  onNotificationClickedWithNoAction: (params: NotificationEventPayload) => void;
+  onNotificationRemoved: (params: NotificationRemovedEventPayload) => void;
+
 };
 
-export type ChangeEventPayload = {
-  value: string;
+export type NotificationEventPayload = {
+  title?: string;
+  summary?: string;
+  ext: any;
 };
 
-export type ExpoAliyunPushViewProps = {
-  url: string;
-  onLoad: (event: { nativeEvent: OnLoadEventPayload }) => void;
-  style?: StyleProp<ViewStyle>;
-};
+export type MessageEventPayload = {
+  title?: string;
+  content?: string;
+}
+
+export type NotificationRemovedEventPayload = {
+  messageId: string;
+}
+
+
 
 /// 小米国际化推送，数据存储区域。Global - 新加坡，Europe - 欧洲德国法兰克福，India - 印度孟买
 export type XiaomiInternationalPushRegion = 'global' | 'europe' | 'india'
@@ -60,3 +70,8 @@ export type AndroidNotificationChannel = {
   soundContentType?: number;
   soundFlag?: number;
 }
+
+export type IOSNotificationForegroundOptions = 'sound' | 'badge' | 'alert' | 'list' | 'banner'
+
+
+export type NotificationPermissionStatus = 'granted' | 'denied' | 'undetermined'

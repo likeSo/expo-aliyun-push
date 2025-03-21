@@ -90,9 +90,4 @@ class ExpoAliyunPushMessageReceiver : MessageReceiver() {
             )
         )
     }
-
-
-    override fun showNotificationNow(p0: Context?, p1: MutableMap<String, String>?): Boolean {
-        return ExpoAliyunPushModule.showNotificationNow
-    }
 }

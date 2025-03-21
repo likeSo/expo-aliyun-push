@@ -1,13 +1,18 @@
 package expo.modules.aliyunpush
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
+import android.provider.Settings
+import androidx.core.content.PermissionChecker
+import anet.channel.util.Utils.context
 import com.alibaba.sdk.android.push.CloudPushService
 import com.alibaba.sdk.android.push.CommonCallback
 import com.alibaba.sdk.android.push.HonorRegister
@@ -24,10 +29,11 @@ import expo.modules.kotlin.modules.ModuleDefinition
 import java.io.File
 import java.net.URL
 
+
 class ExpoAliyunPushModule : Module() {
     companion object {
         private var moduleInstance: ExpoAliyunPushModule? = null
-        var showNotificationNow = true
+//        var showNotificationNow = true
 
         fun sendEventToJS(eventName: String, params: Map<String, Any?>) {
             moduleInstance?.sendEvent(eventName, params)
@@ -63,13 +69,14 @@ class ExpoAliyunPushModule : Module() {
             moduleInstance = this@ExpoAliyunPushModule
             // 根据阿里云官方文档，SDK初始化必须在Application onCreate中进行
             // https://help.aliyun.com/document_detail/434660.html
-            PushServiceFactory.init(appContext.reactContext)
+            PushServiceFactory.init(appContext.reactContext?.applicationContext)
         }
 
         AsyncFunction("initAliyunPush") { promise: Promise ->
             val pushService = PushServiceFactory.getCloudPushService()
+
             pushService.register(
-                appContext.reactContext,
+                appContext.reactContext?.applicationContext,
                 object : CommonCallback {
                     override fun onSuccess(success: String) {
                         promise.resolve(success)
@@ -80,7 +87,6 @@ class ExpoAliyunPushModule : Module() {
                     }
                 })
         }
-        //       val applicationInfo = appContext?.reactContext?.packageManager?.getApplicationInfo(appContext?.reactContext?.packageName.toString(), PackageManager.GET_META_DATA)
 
         AsyncFunction("initThirdPush") { promise: Promise ->
             val application = appContext.reactContext?.applicationContext as android.app.Application
@@ -118,6 +124,7 @@ class ExpoAliyunPushModule : Module() {
             HuaWeiRegister.register(application)
             HonorRegister.register(application)
             VivoRegister.register(application)
+            promise.resolve()
         }
 
         AsyncFunction("setAliyunLogLevel") { level: String ->
@@ -339,8 +346,9 @@ class ExpoAliyunPushModule : Module() {
             pushService.setBadgeNum(application, badge)
         }
 
-        AsyncFunction("getDeviceId") {
-            return@AsyncFunction PushServiceFactory.getCloudPushService().deviceId;
+        AsyncFunction("getDeviceId") { promise: Promise ->
+//            return@AsyncFunction PushServiceFactory.getCloudPushService().deviceId;
+            promise.resolve(PushServiceFactory.getCloudPushService().deviceId)
         }
 
         AsyncFunction("createAndroidNotificationChannel") { channelInfo: ExpoAliyunPushChannelObject, promise: Promise ->
@@ -418,7 +426,7 @@ class ExpoAliyunPushModule : Module() {
                     }
                 }
                 notificationManager.createNotificationChannel(channel)
-
+                promise.resolve()
             } else {
                 promise.reject(
                     "-1",
@@ -428,8 +436,48 @@ class ExpoAliyunPushModule : Module() {
             }
         }
 
-        AsyncFunction("setShowNotificationNow") { showNotification: Boolean ->
-            showNotificationNow = showNotification
+        AsyncFunction("setIOSForegroundNotificationOptions") { options: List<String> ->
+            return@AsyncFunction true
+        }
+
+        AsyncFunction("getNotificationPermissionStatus") {
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                return@AsyncFunction "granted"
+            }
+
+            val notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            if (notificationManager.areNotificationsEnabled()) {
+                return@AsyncFunction "granted"
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (PermissionChecker.checkSelfPermission(
+                        context,
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) == PermissionChecker.PERMISSION_GRANTED
+                ) {
+                    return@AsyncFunction "granted"
+                } else {
+                    return@AsyncFunction "denied"
+                }
+            } else {
+                return@AsyncFunction "denied"
+            }
+        }
+
+
+        AsyncFunction("jumpToNotificationSettings") {
+            val intent = Intent()
+            intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+            } else {
+                intent.putExtra("app_package", context.packageName)
+                intent.putExtra("app_uid", context.applicationInfo.uid)
+            }
+            context.startActivity(intent)
         }
 
         // Enables the module to be used as a native view. Definition components that are accepted as part of

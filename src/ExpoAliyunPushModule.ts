@@ -3,7 +3,9 @@ import { NativeModule, requireNativeModule } from "expo";
 import {
   AliyunPushLogLevel,
   AliyunTagTarget,
+  AndroidNotificationChannel,
   ExpoAliyunPushModuleEvents,
+  IOSNotificationForegroundOptions,
   XiaomiInternationalPushRegion,
 } from "./ExpoAliyunPush.types";
 
@@ -16,6 +18,8 @@ declare class ExpoAliyunPushModule extends NativeModule<ExpoAliyunPushModuleEven
   getDeviceId(): Promise<string>;
 
   setAliyunLogLevel(logLevel: AliyunPushLogLevel): Promise<string>;
+
+  createAndroidNotificationChannel(channelInfo: AndroidNotificationChannel): Promise<void>;
 
   bindAccount(account: string): Promise<string>;
   unbindAccount(): Promise<string>;
@@ -41,7 +45,14 @@ declare class ExpoAliyunPushModule extends NativeModule<ExpoAliyunPushModuleEven
   listAlias(): Promise<string>;
 
   setBadgeNumber(number: number): Promise<string>;
-  setShowNotificationNow(showNotification: boolean): Promise<string>;
+  // setShowNotificationNow(showNotification: boolean): Promise<string>;
+  setIOSForegroundNotificationOptions(
+    options: IOSNotificationForegroundOptions[]
+  ): Promise<string>;
+
+  getNotificationPermissionStatus(): Promise<NotificationPermission>;
+
+  jumpToNotificationSettings(): Promise<void>;
 }
 
 // This call loads the native module object from the JSI.

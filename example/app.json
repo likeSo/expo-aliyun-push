@@ -30,8 +30,8 @@
       [
         "../app.plugin.js",
         {
-          "androidAliyunAppKey": "335446530",
-          "androidAliyunAppSecret": "0c7423370a1f4739a182b16fedc1ec9e",
+          "androidAliyunAppKey": "335469340",
+          "androidAliyunAppSecret": "0e23b52061654c098c1daf9a5ebf26f4",
           "iosAliyunAppKey": "335460396",
           "iosAliyunAppSecret": "c15e523e55c543bab729c06bd554477e",
           "xiaomiAppId": "",

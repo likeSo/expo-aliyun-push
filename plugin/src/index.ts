@@ -179,14 +179,22 @@ const withAliyunPush: ConfigPlugin<ConfigPluginProps> = (config, props) => {
                 "android:name": "com.alibaba.push2.action.NOTIFICATION_OPENED",
               },
             },
-            {
-              $: {
-                "android:name": "com.alibaba.push2.action.NOTIFICATION_REMOVED",
-              },
-            },
+          ],
+        },
+        {
+          action: [
             {
               $: {
                 "android:name": "com.alibaba.sdk.android.push.RECEIVE",
+              },
+            },
+          ],
+        },
+        {
+          action: [
+            {
+              $: {
+                "android:name": "com.alibaba.push2.action.NOTIFICATION_REMOVED",
               },
             },
           ],
