@@ -275,23 +275,27 @@ declare class ExpoAliyunPushModule extends NativeModule<ExpoAliyunPushModuleEven
 
 阿里云推送需要先申请账号，包名需要和账号里面填的一致，不然会初始化失败！
 
+# 已知问题
 厂商通道配置过程中，华为通道必须把AppGallery Connect中的`agconnect-services.json`文件安卓原生项目/app目录下。这违背了该插件的“零原生配置”的初衷，正在想办法怎么解决。
 
 设置自定义铃声的时候，必须在原生代码中使用Resource ID的形式配置通道声音，这同样违背了该插件的初衷。正在想办法怎么解决。
 原生代码设置通道声音的示例：
 ```kotlin
-                    val notificationManager =
-                        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    val channel =
-                        NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT);
-                    channel.description = desc
-                    val audioAttributes = AudioAttributes.Builder()
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                        .build();
-                    channel.setSound(
-                        Uri.parse("android.resource://com.yunduoyy/" + R.raw.phone_laidian),
-                        audioAttributes
-                    )
-                    notificationManager.createNotificationChannel(channel)
+// 假设音频文件放置在/res/raw/ringtong.wav
+// 假设当前项目的包名叫做com.xxx
+ val notificationManager =
+     context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+ val channel =
+     NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT);
+ channel.description = desc
+ val audioAttributes = AudioAttributes.Builder()
+     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+     .build();
+ channel.setSound(
+     Uri.parse("android.resource://com.xxx/" + R.raw.ringtong),
+     audioAttributes
+ )
+ notificationManager.createNotificationChannel(channel)
 ```
+同样的，安卓和iOS平台的自定义铃声文件，也在想办法怎么动态配置。
