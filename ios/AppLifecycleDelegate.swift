@@ -9,9 +9,9 @@ import ExpoModulesCore
 import CloudPushSDK
 
 
-class AppLifecycleDelegate: ExpoAppDelegateSubscriber {
+public class AppLifecycleDelegate: ExpoAppDelegateSubscriber {
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         CloudPushSDK.sendNotificationAck(launchOptions)
         if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
             ExpoAliyunPushModule.moduleInstance?.sendEvent("onNotificationOpened", ["ext": userInfo])
@@ -19,7 +19,7 @@ class AppLifecycleDelegate: ExpoAppDelegateSubscriber {
         return true
     }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         CloudPushSDK.registerDevice(deviceToken) { result in
             if result?.success == true {
                 // 没有结果就是最好的结果
@@ -31,13 +31,13 @@ class AppLifecycleDelegate: ExpoAppDelegateSubscriber {
         }
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    public func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
 #if DEBUG
         print("iOS注册APNs服务失败，原因是：\(String(describing: error))")
 #endif
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         CloudPushSDK.sendNotificationAck(userInfo)
         
         ExpoAliyunPushModule.moduleInstance?.sendEvent("onNotificationOpened", ["ext": userInfo])

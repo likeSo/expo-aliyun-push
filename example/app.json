@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expo.modules.aliyunpush.example"
+      "bundleIdentifier": "expo.modules.aliyunpush.example",
+      "entitlements": {
+        "aps-environment": "development"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -30,19 +33,18 @@
       [
         "../app.plugin.js",
         {
-          "androidAliyunAppKey": "335469340",
-          "androidAliyunAppSecret": "0e23b52061654c098c1daf9a5ebf26f4",
-          "iosAliyunAppKey": "335460396",
-          "iosAliyunAppSecret": "c15e523e55c543bab729c06bd554477e",
+          "androidAliyunAppKey": "",
+          "androidAliyunAppSecret": "",
+          "iosAliyunAppKey": "",
+          "iosAliyunAppSecret": "",
           "xiaomiAppId": "",
           "xiaomiAppKey": "",
-          "xiaomiInternational": false,
-          "huaweiAppId": "113630543",
-          "honorAppId": "104484589",
-          "vivoAppId": "105864041",
-          "vivoAppKey": "1075262f49abc0a99eafae219171282f",
-          "oppoAppKey": "64308dc099bf45a286cecd36f6961093",
-          "oppoAppSecret": "f487c7f02eeb4004be1059bb8d8d38eb",
+          "huaweiAppId": "",
+          "honorAppId": "",
+          "vivoAppId": "",
+          "vivoAppKey": "",
+          "oppoAppKey": "",
+          "oppoAppSecret": "",
           "meizuAppId": "",
           "meizuAppKey": "",
           "fcmSendId": "",

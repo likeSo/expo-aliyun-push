@@ -3,9 +3,9 @@
 <plist version="1.0">
   <dict>
     <key>ALIYUN_PUSH_APP_KEY</key>
-    <string>335460396</string>
+    <string/>
     <key>ALIYUN_PUSH_APP_SECRET</key>
-    <string>c15e523e55c543bab729c06bd554477e</string>
+    <string/>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
     <key>CFBundleDevelopmentRegion</key>
