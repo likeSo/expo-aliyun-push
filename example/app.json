@@ -50,7 +50,10 @@
           "fcmSendId": "",
           "fcmAppId": "",
           "fcmProjectId": "",
-          "fcmApiKey": ""
+          "fcmApiKey": "",
+          "notificationSoundSourcePaths": [
+            "assets/music/ringtong.wav"
+          ]
         }
       ],
       [

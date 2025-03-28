@@ -6,7 +6,7 @@ PODS:
     - ExpoModulesCore
   - Expo (52.0.39):
     - ExpoModulesCore
-  - ExpoAliyunPush (0.1.0):
+  - ExpoAliyunPush (0.1.1):
     - AlicloudPush (~> 2.2.1)
     - ExpoModulesCore
   - ExpoAsset (11.0.4):
@@ -1783,7 +1783,7 @@ SPEC CHECKSUMS:
   DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   EXConstants: a1f35b9aabbb3c6791f8e67722579b1ffcdd3f18
   Expo: d01030025d6965c98bd968ea9b71ae5bb9727cb8
-  ExpoAliyunPush: 495d5417b9de6b165e8c1eff978518e807620e33
+  ExpoAliyunPush: 3b38b6ee98da76b93f9dcf811479a54a703d28be
   ExpoAsset: a4cbc27a7cd24a6e87eb719603790b2cfa8dd326
   ExpoFileSystem: 4d2e7f77a41cfde8c3ae98580d872cd49437f993
   ExpoFont: 773955186469acc5108ff569712a2d243857475f
@@ -1850,7 +1850,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 9a99ced51aab02909c7ab5056f33dff7054305bb
   ReactCommon: 04292c6f596181ebf755e7929d96d2148542b0e8
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  Yoga: 90d80701b27946c4b23461c00a7207f300a6ff71
+  Yoga: 88e46d0f2096eb9762a82c2c45ab23b0880de97d
 
 PODFILE CHECKSUM: d12e4e2a0b0dfe71796750d766b96e0d85020f66
 
