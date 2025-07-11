@@ -356,7 +356,7 @@ const withAliyunPush: ConfigPlugin<ConfigPluginProps> = (config, props) => {
             if (fs.existsSync(iosDir)) {
               const entries = fs.readdirSync(iosDir, { withFileTypes: true });
               // 查找第一个不是Pods且是目录的条目
-              const appDir = entries.find(entry => 
+              const appDir = entries.find((entry: any) => 
                 entry.isDirectory() && 
                 entry.name !== "Pods" && 
                 entry.name !== "build" &&
