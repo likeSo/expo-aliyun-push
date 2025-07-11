@@ -1,6 +1,6 @@
 {
   "name": "expo-aliyun-push",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React Native Expo 阿里云推送插件包。",
   "main": "build/index.js",
   "types": "build/index.d.ts",
