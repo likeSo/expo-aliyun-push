@@ -299,3 +299,7 @@ declare class ExpoAliyunPushModule extends NativeModule<ExpoAliyunPushModuleEven
  notificationManager.createNotificationChannel(channel)
 ```
 同样的，安卓和iOS平台的自定义铃声文件，也在想办法怎么动态配置。
+
+
+## 联系我
+QQ群：682911244
